@@ -8,16 +8,18 @@ def connect(host, user, password, db):
     password=password,
     database=db
   )
-  print(mydb)
 
-def get(command):
-  mycursor = mydb.cursor()
-  mycursor.execute(command)
+def get(command, *condition):
+  mycursor = mydb.cursor(dictionary=True)
+  if len(condition) > 0:
+    mycursor.execute(command, condition[0])
+  else:
+    mycursor.execute(command)
   return mycursor.fetchall()
 
 def set(command, values):
-  mycurosr = mydb.cursor()
-  mycurosr.execute(command, val)
+  mycurosr = mydb.cursor(dictionary=True)
+  mycurosr.execute(command, values)
   mydb.commit()
 
 if __name__ == '__main__':

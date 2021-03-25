@@ -1,0 +1,1 @@
+NO_TOKEN_LIST = ['/api/user/login', '/api/user/register']
