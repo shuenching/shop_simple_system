@@ -1,7 +1,7 @@
 from . import db
 
 def searchUserByNameAndPassword(name, password):
-  sql = "SELECT * FROM User WHERE name=%s AND password=%s"
+  sql = "SELECT id, name, email FROM User WHERE name=%s AND password=%s"
   return db.get(sql, (name, password))
 
 def searchUserByName(name):
